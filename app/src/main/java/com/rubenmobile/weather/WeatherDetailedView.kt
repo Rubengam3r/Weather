@@ -46,7 +46,7 @@ class WeatherDetailedView
 			}
 		}
 
-		// 40.7596198 -111.8867975
+		// 40.7596198
 		OpenWeather.getWeather {icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
 
 			if (error == null)
