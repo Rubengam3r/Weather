@@ -1,0 +1,14 @@
+<resources>
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/irs_blue</item>
+		<item name="colorPrimaryDark">@color/caribbean_green</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="windowActionModeOverlay">true</item>
+		<item name="actionModeStyle">@style/Widget.AppCompat.ActionMode</item>
+		<item name="actionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+	</style>
+
+</resources>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.robolectric:plugins-maven-dependency-resolver:4.9">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.9/3178886c24e0dcfd3db1f3fea7501c1e78ecc9/plugins-maven-dependency-resolver-4.9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.9/3264d2f9b95e8a1cac359c4bbba913a308eba879/plugins-maven-dependency-resolver-4.9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.9/423c56ac7ee614ca964bb58c84693fdfe140acc2/plugins-maven-dependency-resolver-4.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,19 @@
+<resources>
+	<string name="app_name">Weather</string>
+	<string name="city_header">Salt Lake, Utah</string>
+	<string name="cloudy">Cloudy</string>
+	<string name="current_temperature_colon">Current Temperature:</string>
+	<string name="high_temperature_colon">Today\'s High:</string>
+	<string name="low_temperature_colon">Today\'s Low:</string>
+	<string name="percentage">%s%%</string>
+	<string name="precipitation_colon">Chance of Precipitation:</string>
+	<string name="partly_cloudy">Partly Cloudy</string>
+	<string name="rainy">Rainy</string>
+	<string name="sunny">Sunny</string>
+	<string name="snowy">Snowy</string>
+	<string name="ua">UA</string>
+	<string name="unknown">Unknown</string>
+	<string name="weather_icon_image">weather Icon</string>
+	<string name="wind_speed_colon">Wind Speed:</string>
+	
+</resources>
