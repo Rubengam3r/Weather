@@ -44,7 +44,7 @@ class WeatherListItem
 			}
 		}
 
-		OpenWeather.getWeather(latitude, longitude){icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
+		OpenWeather.getWeather{icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
 			if (error == null)
 			{
 				binding.listIconView.setImageBitmap(icon)

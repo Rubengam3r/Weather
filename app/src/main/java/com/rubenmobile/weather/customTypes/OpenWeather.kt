@@ -50,14 +50,14 @@ object OpenWeather
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	fun getWeather(latitude:Double, longitude: Double, weatherResultsCallback: (icon: Bitmap?, precipitation: String, cloudPercent: String, temp: String, windSpeed: String, hiTemp: String, lowTemp: String,  error: String?) -> Unit)
+	fun getWeather(weatherResultsCallback: (icon: Bitmap?, precipitation: String, cloudPercent: String, temp: String, windSpeed: String, hiTemp: String, lowTemp: String,  error: String?) -> Unit)
 	{
 		val httpUrl = openWeatherURL.toHttpUrl()
 
 		Thread {
 			val url = httpUrl.newBuilder()
-				.addQueryParameter("lat", latitude.toString())
-				.addQueryParameter("lon", longitude.toString())
+				.addQueryParameter("lat", lat.toString())
+				.addQueryParameter("lon", long.toString())
 				.addQueryParameter("appid", openWeatherApiKey)
 				.addQueryParameter("units", "imperial")
 				.build()
