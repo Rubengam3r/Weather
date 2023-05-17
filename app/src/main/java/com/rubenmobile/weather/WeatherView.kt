@@ -28,6 +28,7 @@ class WeatherView
 		weatherList.add(WeatherListItem().createView("New York"))
 		weatherList.add(WeatherListItem().createView("San Francisco"))
 
+		WeatherAdapter(weatherList).displayView(GetContext.context, binding.weatherRecyclerList)
 	}
 
 

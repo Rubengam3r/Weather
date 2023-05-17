@@ -9,9 +9,7 @@ import com.rubenmobile.weather.databinding.WeatherItemViewBinding
 class WeatherListItem
 {
 	private lateinit var binding: WeatherItemViewBinding
-	private var cityString = ""
-
-
+	var cityString = ""
 
 	fun createView(cityString: String): WeatherListItem
 	{
@@ -27,15 +25,10 @@ class WeatherListItem
 
 	fun populateValues()
 	{
-		var latitude = Double.NaN
-		var longitude = Double.NaN
-
 		OpenWeather.getGeocode(cityString){city, lat, long, error ->
 			if (error == null)
 			{
 				binding.listTitleView.text = city
-				latitude = lat
-				longitude = long
 
 			}
 			else
@@ -48,7 +41,6 @@ class WeatherListItem
 			if (error == null)
 			{
 				binding.listIconView.setImageBitmap(icon)
-				binding.listTemperatureView.text = temp
 			}
 			else
 			{
