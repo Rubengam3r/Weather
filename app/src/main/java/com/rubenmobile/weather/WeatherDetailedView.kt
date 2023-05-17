@@ -19,15 +19,15 @@ class WeatherDetailedView
 	private var cityName = ""
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	fun loadData(viewGroup: ViewGroup, city: String)
+	fun loadData(viewGroup: MainActivity, city: String)
 	{
 		val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-		val weatherDetailView = inflater.inflate(R.layout.weather_detail_view, viewGroup, false )
+		val weatherDetailView = inflater.inflate(R.layout.weather_detail_view, context.mainSubViewLayout, false )
 		binding = WeatherDetailViewBinding.bind(weatherDetailView)
 		this.cityName = city
-		viewGroup.removeAllViews()
+		viewGroup.mainSubViewLayout.removeAllViews()
 
-		viewGroup.addView(weatherDetailView)
+		viewGroup.mainSubViewLayout.addView(weatherDetailView)
 		populateValues()
 	}
 
