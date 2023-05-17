@@ -2,11 +2,8 @@ package com.rubenmobile.weather
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.view.ActionMode
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
-import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import com.rubenmobile.weather.GetContext.context
 import com.rubenmobile.weather.customTypes.OpenWeather
 import com.rubenmobile.weather.databinding.WeatherDetailViewBinding
@@ -19,15 +16,21 @@ class WeatherDetailedView
 	private var cityName = ""
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	fun loadData(viewGroup: ViewGroup, city: String)
+	fun loadData(viewGroup: MainActivity, city: String)
 	{
 		val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-		val weatherDetailView = inflater.inflate(R.layout.weather_detail_view, viewGroup, false )
+		val weatherDetailView = inflater.inflate(R.layout.weather_detail_view, context.mainSubViewLayout, false )
 		binding = WeatherDetailViewBinding.bind(weatherDetailView)
 		this.cityName = city
-		viewGroup.removeAllViews()
+		viewGroup.mainSubViewLayout.removeAllViews()
 
-		viewGroup.addView(weatherDetailView)
+		val toolbar: Toolbar = viewGroup.findViewById(R.id.toolbar)
+		context.setSupportActionBar(toolbar)
+		context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+		toolbar.setNavigationOnClickListener {
+			WeatherView().refreshView()
+		}
+		viewGroup.mainSubViewLayout.addView(weatherDetailView)
 		populateValues()
 	}
 
@@ -47,7 +50,7 @@ class WeatherDetailedView
 		}
 
 		// 40.7596198
-		OpenWeather.getWeather {icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
+		OpenWeather.getWeather{icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
 
 			if (error == null)
 			{

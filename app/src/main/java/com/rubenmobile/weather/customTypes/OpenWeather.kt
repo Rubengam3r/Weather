@@ -3,17 +3,15 @@ package com.rubenmobile.weather.customTypes
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.location.Geocoder
-import com.google.android.gms.maps.model.LatLng
 import com.rubenmobile.weather.GetContext
 import com.rubenmobile.weather.HttpService
 import com.rubenmobile.weather.R
-import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.Request
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
-import java.lang.Exception
 import java.lang.StringBuilder
 import java.util.Locale
 
@@ -105,7 +103,12 @@ object OpenWeather
 						result.json.getString("message")
 					)
 				}
-			} catch (e: IOException) {
+			}
+			catch (e: IOException) {
+				weatherResultsCallback(null, "", "", "", "", "", "", e.toString())
+			}
+			catch (e: JSONException)
+			{
 				weatherResultsCallback(null, "", "", "", "", "", "", e.toString())
 			}
 		}.start()
