@@ -1,34 +1,28 @@
 package com.rubenmobile.weather
 
-import android.content.Context
-import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.rubenmobile.weather.customTypes.OpenWeather
 import com.rubenmobile.weather.databinding.WeatherItemViewBinding
 
-class WeatherListItem
+class WeatherListItem(var cityString: String)
 {
 	private lateinit var binding: WeatherItemViewBinding
-	var cityString = ""
 
-	fun createView(cityString: String): WeatherListItem
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	fun createView(viewGroup: ViewGroup, item: WeatherListItem)
 	{
-		this.cityString = cityString
-		val inflater = GetContext.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-		val listItemView = inflater.inflate(R.layout.weather_item_view, GetContext.context.mainSubViewLayout, false)
-		binding = WeatherItemViewBinding.bind(listItemView)
+		binding = WeatherItemViewBinding.bind(viewGroup)
 
-		populateValues()
+		val imageView = binding.listIconView
+		val titleView = binding.listTitleView
+		val temperatureView = binding.listTemperatureView
 
-		return this
-	}
+		imageView.setImageBitmap(null)
 
-	fun populateValues()
-	{
 		OpenWeather.getGeocode(cityString){city, lat, long, error ->
 			if (error == null)
 			{
-				binding.listTitleView.text = city
-
+				titleView.text = city
 			}
 			else
 			{
@@ -39,15 +33,17 @@ class WeatherListItem
 		OpenWeather.getWeather{icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
 			if (error == null)
 			{
-				binding.listIconView.setImageBitmap(icon)
+				GetContext.context.runOnUiThread{
+					temperatureView.text = String.format("%s \u2109", temp)
+					imageView.setImageBitmap(icon)
+				}
+
 			}
 			else
 			{
 				//show an error
-				binding.listTemperatureView.text = "UA"
 			}
 		}
-
 
 	}
 }
