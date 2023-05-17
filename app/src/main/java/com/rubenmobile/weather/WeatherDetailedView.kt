@@ -47,7 +47,7 @@ class WeatherDetailedView
 		}
 
 		// 40.7596198
-		OpenWeather.getWeather {icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
+		OpenWeather.getWeather(latitude, longitude) {icon, precipitation, cloudPercent, temp, windSpeed, hiTemp, lowTemp, error ->
 
 			if (error == null)
 			{

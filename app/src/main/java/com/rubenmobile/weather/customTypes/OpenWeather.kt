@@ -11,6 +11,7 @@ import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.Request
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 import java.lang.Exception
@@ -49,14 +50,14 @@ object OpenWeather
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	fun getWeather(weatherResultsCallback: (icon: Bitmap?, precipitation: String, cloudPercent: String, temp: String, windSpeed: String, hiTemp: String, lowTemp: String,  error: String?) -> Unit)
+	fun getWeather(latitude:Double, longitude: Double, weatherResultsCallback: (icon: Bitmap?, precipitation: String, cloudPercent: String, temp: String, windSpeed: String, hiTemp: String, lowTemp: String,  error: String?) -> Unit)
 	{
 		val httpUrl = openWeatherURL.toHttpUrl()
 
 		Thread {
 			val url = httpUrl.newBuilder()
-				.addQueryParameter("lat", lat.toString())
-				.addQueryParameter("lon", long.toString())
+				.addQueryParameter("lat", latitude.toString())
+				.addQueryParameter("lon", longitude.toString())
 				.addQueryParameter("appid", openWeatherApiKey)
 				.addQueryParameter("units", "imperial")
 				.build()
@@ -105,7 +106,12 @@ object OpenWeather
 						result.json.getString("message")
 					)
 				}
-			} catch (e: IOException) {
+			}
+			catch (e: IOException) {
+				weatherResultsCallback(null, "", "", "", "", "", "", e.toString())
+			}
+			catch (e: JSONException)
+			{
 				weatherResultsCallback(null, "", "", "", "", "", "", e.toString())
 			}
 		}.start()

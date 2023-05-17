@@ -7,6 +7,7 @@ import com.rubenmobile.weather.databinding.WeatherViewBinding
 class WeatherView
 {
 	private lateinit var binding: WeatherViewBinding
+	private var weatherList = ArrayList<WeatherListItem>()
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	fun loadView()
@@ -23,9 +24,10 @@ class WeatherView
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	private fun populateValues()
 	{
-		binding.city.setOnClickListener {
-			WeatherDetailedView().loadData(GetContext.context.mainSubViewLayout, binding.city.text.toString())
-		}
+		weatherList.add(WeatherListItem().createView("Salt Lake City"))
+		weatherList.add(WeatherListItem().createView("New York"))
+		weatherList.add(WeatherListItem().createView("San Francisco"))
+
 	}
 
 
