@@ -1,7 +1,6 @@
 package com.rubenmobile.weather
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.view.LayoutInflater
 import com.rubenmobile.weather.customTypes.OpenWeather
 import com.rubenmobile.weather.databinding.WeatherItemViewBinding

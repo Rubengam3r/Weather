@@ -2,11 +2,7 @@ package com.rubenmobile.weather
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.view.ActionMode
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
-import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import com.rubenmobile.weather.GetContext.context
 import com.rubenmobile.weather.customTypes.OpenWeather
