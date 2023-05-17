@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import com.rubenmobile.weather.GetContext.context
 import com.rubenmobile.weather.customTypes.OpenWeather
 import com.rubenmobile.weather.databinding.WeatherDetailViewBinding
@@ -27,6 +28,12 @@ class WeatherDetailedView
 		this.cityName = city
 		viewGroup.mainSubViewLayout.removeAllViews()
 
+		val toolbar: Toolbar = viewGroup.findViewById(R.id.toolbar)
+		context.setSupportActionBar(toolbar)
+		context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+		toolbar.setNavigationOnClickListener {
+			WeatherView().refreshView()
+		}
 		viewGroup.mainSubViewLayout.addView(weatherDetailView)
 		populateValues()
 	}
