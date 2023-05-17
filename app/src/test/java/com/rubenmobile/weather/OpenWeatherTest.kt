@@ -2,7 +2,6 @@ package com.rubenmobile.weather
 
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.junit.After
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -15,6 +14,7 @@ import org.robolectric.RobolectricTestRunner
 class OpenWeatherTest
 {
     private lateinit var okHttpClient: OkHttpClient
+    private val openWeatherURL = "https://api.openweathermap.org/data/2.5/weather?lat=40.2252&lon=-111.6607&appid="
     private val openWeatherApiKey = "8ecdeb18396af64d9cc27576ece9d705"
 
     @Before
@@ -28,7 +28,7 @@ class OpenWeatherTest
     fun testApiResponse()
     {
         val request = Request.Builder()
-            .url("https://api.openweathermap.org/data/2.5/weather?lat=40.2252&lon=-111.6607&appid=$openWeatherApiKey")
+            .url(openWeatherURL+openWeatherApiKey)
             .build()
 
         val response = okHttpClient.newCall(request).execute()
